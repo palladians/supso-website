@@ -2,12 +2,12 @@
 import '@/globals.css'
 import {HeroEvents} from "@/components/hero-events"
 import {Button} from "@/components/ui/button"
-import {Switch} from "@/components/ui/switch"
-import {Label} from "@/components/ui/label"
 import {Card, CardHeader, CardTitle, CardDescription, CardContent} from "@/components/ui/card"
 import { codeToHtml } from 'shiki'
 import Navbar from '@/components/navbar.astro'
 import Footer from '@/components/footer.astro'
+import {BentoToggles} from '@/components/bento-toggles.tsx'
+import { ScanEye } from 'lucide-react'
 const code = `import { log_event } from 'supso_sdk'
 
 log_event({
@@ -35,7 +35,12 @@ const codeHtml = codeToHtml(code, { lang: 'typescript', theme: 'rose-pine' })
         <Button size="sm" variant="outline">Follow on X</Button>
         <h1 class="text-5xl font-semibold leading-[1.25]">Real-time digital product observability.</h1>
         <p class="leading-[2]">Build better digital products by tracking every inch of your application and all its infrastructure. Organize the product's data into kanban boards. Manage features of your product with feature flags.</p>
-        <Button size="lg">Start Observing</Button>
+        <a href="https://app.supso.co">
+          <Button size="lg" className="group gap-1 items-center">
+            <ScanEye size={20} className="w-0 group-hover:w-4 transition-all" />
+            <span>Start Observing</span>
+          </Button>
+        </a>
       </div>
       <HeroEvents />
     </div>
@@ -81,7 +86,7 @@ const codeHtml = codeToHtml(code, { lang: 'typescript', theme: 'rose-pine' })
           <CardDescription>View data inside interactive dashboards.</CardDescription>
         </CardHeader>
         <CardContent>
-          <svg height="auto" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg"><path d="M0 500h60V147.993q0-4-4-4H4q-4 0-4 4ZM75 500h60V350.99q0-4-4-4H79q-4 0-4 4ZM150 500h60V209.462q0-4-4-4h-52q-4 0-4 4ZM225 500h60V256.766q0-4-4-4h-52q-4 0-4 4ZM300 500h60V391.618q0-4-4-4h-52q-4 0-4 4ZM375 500h60V273.647q0-4-4-4h-52q-4 0-4 4ZM450 500h60V111.175q0-4-4-4h-52q-4 0-4 4ZM525 500h60V89.27q0-4-4-4h-52q-4 0-4 4ZM600 500h60V371.923q0-4-4-4h-52q-4 0-4 4ZM675 500h60V91.205q0-4-4-4h-52q-4 0-4 4ZM750 500h60V129.844q0-4-4-4h-52q-4 0-4 4ZM825 500h60V181.385q0-4-4-4h-52q-4 0-4 4ZM900 500h60V206.858q0-4-4-4h-52q-4 0-4 4ZM975 500h60V210.197q0-4-4-4h-52q-4 0-4 4ZM1050 500h60V95.633q0-4-4-4h-52q-4 0-4 4ZM1125 500h60V147.544q0-4-4-4h-52q-4 0-4 4ZM1200 500h60V354.117q0-4-4-4h-52q-4 0-4 4ZM1275 500h60V374.734q0-4-4-4h-52q-4 0-4 4ZM1350 500h60V360.435q0-4-4-4h-52q-4 0-4 4ZM1425 500h60V146.588q0-4-4-4h-52q-4 0-4 4Z" fill="#14b8a6"/></svg>
+          <svg viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg"><path d="M0 500h60V147.993q0-4-4-4H4q-4 0-4 4ZM75 500h60V350.99q0-4-4-4H79q-4 0-4 4ZM150 500h60V209.462q0-4-4-4h-52q-4 0-4 4ZM225 500h60V256.766q0-4-4-4h-52q-4 0-4 4ZM300 500h60V391.618q0-4-4-4h-52q-4 0-4 4ZM375 500h60V273.647q0-4-4-4h-52q-4 0-4 4ZM450 500h60V111.175q0-4-4-4h-52q-4 0-4 4ZM525 500h60V89.27q0-4-4-4h-52q-4 0-4 4ZM600 500h60V371.923q0-4-4-4h-52q-4 0-4 4ZM675 500h60V91.205q0-4-4-4h-52q-4 0-4 4ZM750 500h60V129.844q0-4-4-4h-52q-4 0-4 4ZM825 500h60V181.385q0-4-4-4h-52q-4 0-4 4ZM900 500h60V206.858q0-4-4-4h-52q-4 0-4 4ZM975 500h60V210.197q0-4-4-4h-52q-4 0-4 4ZM1050 500h60V95.633q0-4-4-4h-52q-4 0-4 4ZM1125 500h60V147.544q0-4-4-4h-52q-4 0-4 4ZM1200 500h60V354.117q0-4-4-4h-52q-4 0-4 4ZM1275 500h60V374.734q0-4-4-4h-52q-4 0-4 4ZM1350 500h60V360.435q0-4-4-4h-52q-4 0-4 4ZM1425 500h60V146.588q0-4-4-4h-52q-4 0-4 4Z" fill="#14b8a6"/></svg>
         </CardContent>
       </Card>
       <Card>
@@ -89,19 +94,8 @@ const codeHtml = codeToHtml(code, { lang: 'typescript', theme: 'rose-pine' })
           <CardTitle>Manage your app's features with flags</CardTitle>
           <CardDescription>Feature flags are a convinient way to toggle features inside you applications.</CardDescription>
         </CardHeader>
-        <CardContent className='flex flex-col gap-2'>
-          <Card className="flex p-4 items-center gap-4">
-            <Switch id="friyay" defaultChecked={true} />
-            <Label htmlFor="friyay">The feature that killed the production env on Friday.</Label>
-          </Card>
-          <Card className="flex p-4 items-center gap-4">
-            <Switch id="forgotten" />
-            <Label htmlFor="forgotten">The feature you hardcoded and forgot to turn on.</Label>
-          </Card>
-          <Card className="flex p-4 items-center gap-4">
-            <Switch id="forgotten" />
-            <Label htmlFor="forgotten">Provider responding with HTTP 200 error.</Label>
-          </Card>
+        <CardContent>
+          <BentoToggles client:load />
         </CardContent>
       </Card>
     </div>

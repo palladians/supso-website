@@ -1,20 +1,24 @@
 ---
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 ---
 
 <nav class="sticky top-4 z-10 my-4 container flex justify-center animate-in slide-in-from-top duration-500 zoom-in-75 fade-in">
     <Card className="max-w-[32rem] w-full py-2 px-4 flex justify-between items-center bg-zinc-950/40 backdrop-blur-xl">
         <Button variant="ghost" size="sm">
-        <img src="/logo.svg" class="h-6" />
+            <img src="/logo.svg" class="h-6" />
         </Button>
         <div class="flex items-center gap-2">
-        <Button variant="ghost" size="sm">Docs</Button>
-        <a href="https://app.supso.co">
-        <Button size="sm">
-                Dashboard
-        </Button>
-    </a>
+            <a href="/docs">
+                <Button variant="ghost" size="sm">Docs</Button>
+            </a>
+            <a href="https://app.supso.co">
+                <Button size="sm" className="gap-1 group">
+                    <span>Dashboard</span>
+                    <ArrowRight size={16} className="w-0 group-hover:w-4 transition-all" />
+                </Button>
+            </a>
         </div>
     </Card>
 </nav>
