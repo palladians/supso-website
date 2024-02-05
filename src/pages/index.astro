@@ -4,10 +4,9 @@ import {HeroEvents} from "@/components/hero-events"
 import {Button} from "@/components/ui/button"
 import {Card, CardHeader, CardTitle, CardDescription, CardContent} from "@/components/ui/card"
 import { codeToHtml } from 'shiki'
-import Navbar from '@/components/navbar.astro'
-import Footer from '@/components/footer.astro'
 import {BentoToggles} from '@/components/bento-toggles.tsx'
 import { ScanEye } from 'lucide-react'
+import MainLayout from '@/layouts/main.astro'
 const code = `import { log_event } from 'supso_sdk'
 
 log_event({
@@ -19,87 +18,78 @@ log_event({
 const codeHtml = codeToHtml(code, { lang: 'typescript', theme: 'rose-pine' })
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Supso</title>
-	</head>
-	<body class="flex flex-col dark">
-    <Navbar />
-    <div class="container flex flex-col gap-16">
-      <div class="animate-in fade-in slide-in-from-top-8 duration-500 py-16 lg:py-32 px-8 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center justify-center bg-gradient-radial from-emerald-950/50 to-80% to-zinc-950 border rounded-[2rem] lg:rounded-[3rem] shadow-2xl zoom-in-90">
-      <div class="flex flex-col gap-6 items-start">
-        <Button size="sm" variant="outline">Follow on X</Button>
-        <h1 class="text-5xl font-semibold leading-[1.25]">Real-time digital product observability.</h1>
-        <p class="leading-[2]">Build better digital products by tracking every inch of your application and all its infrastructure. Organize the product's data into kanban boards. Manage features of your product with feature flags.</p>
-        <a href="https://app.supso.co">
-          <Button size="lg" className="group gap-1 items-center">
-            <ScanEye size={20} className="w-0 group-hover:w-4 transition-all" />
-            <span>Start Observing</span>
-          </Button>
-        </a>
-      </div>
-      <HeroEvents />
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-500 zoom-in-90">
-      <Card>
-        <CardHeader>
-          <CardTitle>Log events easily</CardTitle>
-          <CardDescription>Use our REST API or TypeScript SDK.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div class="bg-[#191723] p-2 rounded-[1rem] overflow-hidden">
-            <div set:html={codeHtml} />
-          </div>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Organize events into boards</CardTitle>
-          <CardDescription>Filter your events with tags and organize them into kanban boards.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div class="flex gap-4">
-            <Card className="flex flex-col gap-2 p-2 flex-1 rounded-[1rem]">
-              <p class="font-semibold">Contact Requests</p>
-              <div class="flex flex-col gap-2">
-                <Card className="p-2 rounded-[0.5rem]">new_request</Card>
-                <Card className="p-2 rounded-[0.5rem]">new_request</Card>
-              </div>
-            </Card>
-            <Card className="flex flex-col gap-2 p-2 flex-1 rounded-[1rem]">
-              <p class="font-semibold">Contacted</p>
-              <div class="flex flex-col gap-2">
-                <Card className="p-2 rounded-[0.5rem]">new_request</Card>
-                <Card className="p-2 rounded-[0.5rem]">new_request</Card>
-              </div>
-            </Card>
-          </div>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Get insights about the app</CardTitle>
-          <CardDescription>View data inside interactive dashboards.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <svg viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg"><path d="M0 500h60V147.993q0-4-4-4H4q-4 0-4 4ZM75 500h60V350.99q0-4-4-4H79q-4 0-4 4ZM150 500h60V209.462q0-4-4-4h-52q-4 0-4 4ZM225 500h60V256.766q0-4-4-4h-52q-4 0-4 4ZM300 500h60V391.618q0-4-4-4h-52q-4 0-4 4ZM375 500h60V273.647q0-4-4-4h-52q-4 0-4 4ZM450 500h60V111.175q0-4-4-4h-52q-4 0-4 4ZM525 500h60V89.27q0-4-4-4h-52q-4 0-4 4ZM600 500h60V371.923q0-4-4-4h-52q-4 0-4 4ZM675 500h60V91.205q0-4-4-4h-52q-4 0-4 4ZM750 500h60V129.844q0-4-4-4h-52q-4 0-4 4ZM825 500h60V181.385q0-4-4-4h-52q-4 0-4 4ZM900 500h60V206.858q0-4-4-4h-52q-4 0-4 4ZM975 500h60V210.197q0-4-4-4h-52q-4 0-4 4ZM1050 500h60V95.633q0-4-4-4h-52q-4 0-4 4ZM1125 500h60V147.544q0-4-4-4h-52q-4 0-4 4ZM1200 500h60V354.117q0-4-4-4h-52q-4 0-4 4ZM1275 500h60V374.734q0-4-4-4h-52q-4 0-4 4ZM1350 500h60V360.435q0-4-4-4h-52q-4 0-4 4ZM1425 500h60V146.588q0-4-4-4h-52q-4 0-4 4Z" fill="#14b8a6"/></svg>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Manage your app's features with flags</CardTitle>
-          <CardDescription>Feature flags are a convinient way to toggle features inside you applications.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <BentoToggles client:load />
-        </CardContent>
-      </Card>
-    </div>
+<MainLayout title="Digital product suite">
+<div class="container flex flex-col gap-16">
+  <div class="animate-in fade-in slide-in-from-top-8 duration-500 py-16 lg:py-32 px-8 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-32 items-center justify-center bg-gradient-radial from-emerald-950/50 to-80% to-zinc-950 border rounded-[2rem] lg:rounded-[3rem] shadow-2xl zoom-in-90">
+  <div class="flex flex-col gap-6 items-start">
+    <a href="https://twitter.com/supsohq" target="_blank" rel="noreferrer noopener">
+      <Button size="sm" variant="outline">Follow on 𝕏</Button>
+    </a>
+    <h1 class="text-5xl font-semibold leading-[1.25] font-['CalSans']">Real-time digital product observability.</h1>
+    <p class="leading-[2] text-muted-foreground">Build better digital products by tracking every inch of your application and all its infrastructure. Organize the product's data into kanban boards. Manage features of your product with feature flags.</p>
+    <a href="https://app.supso.co">
+      <Button size="lg" className="group gap-1 items-center">
+        <ScanEye size={20} className="w-0 group-hover:w-4 transition-all" />
+        <span>Start Observing</span>
+      </Button>
+    </a>
   </div>
-  <Footer />
-	</body>
-</html>
+  <HeroEvents />
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-500 zoom-in-90">
+  <Card>
+    <CardHeader>
+      <CardTitle className="font-['CalSans']">Log events easily</CardTitle>
+      <CardDescription>Use our REST API or TypeScript SDK.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div class="bg-[#191723] p-2 rounded-[1rem] overflow-hidden">
+        <div set:html={codeHtml} />
+      </div>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle className="font-['CalSans']">Organize events into boards</CardTitle>
+      <CardDescription>Filter your events with tags and organize them into kanban boards.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div class="flex gap-4">
+        <Card className="flex flex-col gap-2 p-2 flex-1 rounded-[1rem]">
+          <p class="font-semibold">Contact Requests</p>
+          <div class="flex flex-col gap-2">
+            <Card className="p-2 rounded-[0.5rem]">new_request</Card>
+            <Card className="p-2 rounded-[0.5rem]">new_request</Card>
+          </div>
+        </Card>
+        <Card className="flex flex-col gap-2 p-2 flex-1 rounded-[1rem]">
+          <p class="font-semibold">Contacted</p>
+          <div class="flex flex-col gap-2">
+            <Card className="p-2 rounded-[0.5rem]">new_request</Card>
+            <Card className="p-2 rounded-[0.5rem]">new_request</Card>
+          </div>
+        </Card>
+      </div>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle className="font-['CalSans']">Get insights about the app</CardTitle>
+      <CardDescription>View data inside interactive dashboards.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <svg viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg"><path d="M0 500h60V147.993q0-4-4-4H4q-4 0-4 4ZM75 500h60V350.99q0-4-4-4H79q-4 0-4 4ZM150 500h60V209.462q0-4-4-4h-52q-4 0-4 4ZM225 500h60V256.766q0-4-4-4h-52q-4 0-4 4ZM300 500h60V391.618q0-4-4-4h-52q-4 0-4 4ZM375 500h60V273.647q0-4-4-4h-52q-4 0-4 4ZM450 500h60V111.175q0-4-4-4h-52q-4 0-4 4ZM525 500h60V89.27q0-4-4-4h-52q-4 0-4 4ZM600 500h60V371.923q0-4-4-4h-52q-4 0-4 4ZM675 500h60V91.205q0-4-4-4h-52q-4 0-4 4ZM750 500h60V129.844q0-4-4-4h-52q-4 0-4 4ZM825 500h60V181.385q0-4-4-4h-52q-4 0-4 4ZM900 500h60V206.858q0-4-4-4h-52q-4 0-4 4ZM975 500h60V210.197q0-4-4-4h-52q-4 0-4 4ZM1050 500h60V95.633q0-4-4-4h-52q-4 0-4 4ZM1125 500h60V147.544q0-4-4-4h-52q-4 0-4 4ZM1200 500h60V354.117q0-4-4-4h-52q-4 0-4 4ZM1275 500h60V374.734q0-4-4-4h-52q-4 0-4 4ZM1350 500h60V360.435q0-4-4-4h-52q-4 0-4 4ZM1425 500h60V146.588q0-4-4-4h-52q-4 0-4 4Z" fill="#14b8a6"/></svg>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle className="font-['CalSans']">Manage your app's features with flags</CardTitle>
+      <CardDescription>Feature flags are a convinient way to toggle features inside you applications.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <BentoToggles client:load />
+    </CardContent>
+  </Card>
+</div>
+</div>
+</MainLayout>

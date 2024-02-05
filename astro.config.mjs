@@ -6,13 +6,15 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://supso.co",
   integrations: [
     react(),
     tailwind({
       applyBaseStyles: false,
     }),
     starlight({
-      title: "Supso",
+      title: "Supso Docs",
+      titleDelimiter: "-",
       customCss: ["./src/starlight.css"],
       sidebar: [
         { label: "Welcome", link: "/docs" },
@@ -22,6 +24,9 @@ export default defineConfig({
         { label: "SDKs", items: [] },
         { label: "Integrations", items: [] },
       ],
+      components: {
+        Head: "./src/components/docs-head.astro",
+      },
     }),
   ],
 });

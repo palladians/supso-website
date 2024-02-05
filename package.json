@@ -46,6 +46,8 @@
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
     "astro": "^4.3.2",
+    "astro-font": "^0.0.77",
+    "astro-og-canvas": "^0.4.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",

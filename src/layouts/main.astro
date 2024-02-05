@@ -1,0 +1,49 @@
+---
+import '@/globals.css'
+import Navbar from '@/components/navbar.astro'
+import Footer from '@/components/footer.astro'
+import { AstroFont } from "astro-font";
+const { title, description } = Astro.props;
+const { pathname } = Astro.url
+const pathnameArray = pathname.split('/')
+const pageName = pathnameArray[pathnameArray.length - 1] || 'index'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - Supso</title>
+        <AstroFont
+            config={[
+                {
+                name: "CalSans",
+                src: [
+                    {
+                        style: 'semibold',
+                        weight: '600',
+                        path: './public/CalSans-SemiBold.ttf'
+                    },
+                ],
+                preload: false,
+                fallback: "sans-serif",
+                display: 'swap'
+                },
+            ]}
+        />
+        <meta property="og:title" content={`${title} - Supso`} />
+        <meta property="og:description" content={description ?? 'Real-time digital product observability.'} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://supso.co${pathname}`} />
+        <meta property="og:image" content={`https://supso.co/og/${pageName}.png`} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@supsohq" />
+	</head>
+	<body class="flex flex-col dark">
+        <Navbar />
+        <slot />
+        <Footer />
+    </body>
+</html>
