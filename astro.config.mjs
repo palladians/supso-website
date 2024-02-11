@@ -19,8 +19,8 @@ export default defineConfig({
       sidebar: [
         { label: "Welcome", link: "/docs" },
         { label: "Getting started", link: "/docs/getting-started" },
+        { label: "API Reference", link: "/docs/api-reference" },
         { label: "Features", items: [] },
-        { label: "API Reference", items: [] },
         { label: "SDKs", items: [] },
         { label: "Integrations", items: [] },
       ],

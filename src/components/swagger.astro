@@ -1,0 +1,8 @@
+---
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
+import './swagger.css'
+const url = import.meta.env.PUBLIC_APP_URL + '/api/openapi'
+---
+
+<SwaggerUI client:load {url} />

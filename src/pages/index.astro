@@ -7,6 +7,7 @@ import { codeToHtml } from 'shiki'
 import {BentoToggles} from '@/components/bento-toggles.tsx'
 import { ScanEye } from 'lucide-react'
 import MainLayout from '@/layouts/main.astro'
+const href = import.meta.env.PUBLIC_APP_URL
 const code = `import { log_event } from 'supso_sdk'
 
 log_event({
@@ -27,7 +28,7 @@ const codeHtml = codeToHtml(code, { lang: 'typescript', theme: 'rose-pine' })
     </a>
     <h1 class="text-5xl font-semibold leading-[1.25] font-['CalSans']">Real-time digital product observability.</h1>
     <p class="leading-[2] text-muted-foreground">Build better digital products by tracking every inch of your application and all its infrastructure. Organize the product's data into kanban boards. Manage features of your product with feature flags.</p>
-    <a href="https://app.supso.co">
+    <a {href}>
       <Button size="lg" className="group gap-1 items-center">
         <ScanEye size={20} className="w-0 group-hover:w-4 transition-all" />
         <span>Start Observing</span>
