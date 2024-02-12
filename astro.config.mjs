@@ -20,9 +20,17 @@ export default defineConfig({
         { label: "Welcome", link: "/docs" },
         {
           label: "Getting started",
-          link: "/docs/getting-started",
+          items: [
+            {
+              label: "Create Account",
+              link: "/docs/getting-started/create-account",
+            },
+            {
+              label: "Create Project",
+              link: "/docs/getting-started/create-project",
+            },
+          ],
         },
-        { label: "API Reference", link: "/docs/api-reference" },
         {
           label: "Features",
           items: [
@@ -38,8 +46,13 @@ export default defineConfig({
               label: "Feature flags",
               link: "/docs/features/feature-flags",
             },
+            {
+              label: "Playground",
+              link: "/docs/features/playground",
+            },
           ],
         },
+        { label: "API Reference", link: "/docs/api-reference" },
         {
           label: "SDKs",
           items: [{ label: "TypeScript", link: "/docs/sdks/typescript" }],
@@ -53,7 +66,10 @@ export default defineConfig({
         },
         {
           label: "Self-hosting",
-          items: [{ label: "Docker Image", link: "/docs/self-hosting/docker" }],
+          items: [
+            { label: "Docker Image", link: "/docs/self-hosting/docker" },
+            { label: "Railway", link: "/docs/self-hosting/railway" },
+          ],
         },
       ],
       components: {
